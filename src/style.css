@@ -150,6 +150,10 @@
   padding: 5px;
   margin: 0 5px;
 }
+#forecast-row {
+  display: flex;
+  flex-wrap: nowrap;
+}
 .next-day-emoji {
   text-align: center;
   font-size: 35px;
@@ -171,4 +175,12 @@
 :hover.celsium {
   text-decoration: none;
   color: aliceblue;
+}
+.code-source {
+  color: #c2bebe;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-top: 5px;
+}
+#github-link {
+  color: rgb(126, 178, 184);
 }
