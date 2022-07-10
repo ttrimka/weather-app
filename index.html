@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WeatherApp</title>
+    <link rel="stylesheet" href="src/style.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/67d047ed62.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="weather-app">
+        <form id="search-engine">
+          <div class="search-box">
+            <input
+              id="text"
+              class="search-txt"
+              type="text"
+              name=""
+              placeholder="Search for location"
+            />
+            <button class="search-btn">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+        </form>
+        <button title="Current Location" class="current-location-btn">
+          <i class="fa-solid fa-location-pin"></i>
+        </button>
+        <div class="today-forecast">
+          <h1 class="today-day" id="today-week-day">Today</h1>
+          <div class="row">
+            <div class="col-4">
+              <p class="today-emoji"><i class="fa-solid fa-cloud"></i></p>
+            </div>
+            <div class="col-4">
+              <p class="today-temp">
+                <a id="current-temp"></a>
+                <a href="#" class="celsium">°</a>
+                <a href="#" class="fahrenheit">F</a>
+              </p>
+            </div>
+            <div class="col-4">
+              <p class="today-precipitation">Rain</p>
+              <p>
+                <i class="fa-solid fa-droplet"></i>
+                <span class="today-humidity"></span>%
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="location">
+          <h1 class="current-location">Current location</h1>
+          <p class="current-time">10:10 AM</p>
+        </div>
+        <div class="next-days-forecast">
+          <div class="row">
+            <div class="col-sm-2">
+              <p class="next-day" id="first-day">Mon</p>
+              <div class="row">
+                <div class="col-6">
+                  <p class="next-day-emoji">
+                    <i class="fa-solid fa-cloud-sun-rain"></i>
+                  </p>
+                </div>
+                <div class="col-6">
+                  <p class="next-day-temp-max">23°</p>
+                  <p class="next-day-temp-max">14°</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <p class="next-day" id="second-day">Tue</p>
+              <div class="row">
+                <div class="col-6">
+                  <p class="next-day-emoji">
+                    <i class="fa-solid fa-cloud-sun"></i>
+                  </p>
+                </div>
+                <div class="col-6">
+                  <p class="next-day-temp-max">25°</p>
+                  <p class="next-day-temp-max">18°</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <p class="next-day" id="third-day">Wed</p>
+              <div class="row">
+                <div class="col-6">
+                  <p class="next-day-emoji"><i class="fa-solid fa-sun"></i></p>
+                </div>
+                <div class="col-6">
+                  <p class="next-day-temp-max">28°</p>
+                  <p class="next-day-temp-max">18°</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <p class="next-day" id="fourth-day">Thu</p>
+              <div class="row">
+                <div class="col-6">
+                  <p class="next-day-emoji">
+                    <i class="fa-solid fa-cloud-bolt"></i>
+                  </p>
+                </div>
+                <div class="col-6">
+                  <p class="next-day-temp-max">21°</p>
+                  <p class="next-day-temp-max">12°</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <p class="next-day" id="fifth-day">Fri</p>
+              <div class="row">
+                <div class="col-6">
+                  <p class="next-day-emoji">
+                    <i class="fa-solid fa-cloud-sun-rain"></i>
+                  </p>
+                </div>
+                <div class="col-6">
+                  <p class="next-day-temp-max">24°</p>
+                  <p class="next-day-temp-max">17°</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="src/script.js"></script>
+  </body>
+</html>
