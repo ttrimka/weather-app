@@ -50,13 +50,14 @@
 }
 .current-location-btn {
   color: #9fc4c8;
+  padding: 2px 6px;
   margin: 0;
   position: relative;
   bottom: 13.5px;
   left: 205px;
   border: none;
   background: #dfdede;
-  border-radius: 50px;
+  border-radius: 20px;
   font-size: 12px;
 }
 .current-location-btn:hover {
