@@ -1,22 +1,3 @@
-//add date
-let now = new Date();
-let daysOfWeek = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let todayDay = daysOfWeek[now.getDay()];
-let today = document.querySelector(".today-day");
-today.innerHTML = `${todayDay}`;
-//add time
-let hours = now.toLocaleTimeString();
-let currentTime = document.querySelector(".current-time");
-currentTime.innerHTML = `${hours}`;
-//show current weather for today
 function showTodayData(response) {
   document.querySelector(".current-location").innerHTML = response.data.name;
   document.querySelector("#current-temp").innerHTML = Math.round(
@@ -26,6 +7,20 @@ function showTodayData(response) {
     response.data.weather[0].main;
   document.querySelector(".today-humidity").innerHTML =
     response.data.main.humidity;
+  document.querySelector(".current-time").innerHTML = new Date(
+    response.data.dt * 1000
+  ).toLocaleTimeString();
+  let daysOfWeek = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  document.querySelector(".today-day").innerHTML =
+    daysOfWeek[new Date(response.data.dt * 1000).getDay()];
 }
 //add default city
 function searchCity(city) {
