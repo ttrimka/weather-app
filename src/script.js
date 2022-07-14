@@ -21,6 +21,11 @@ function showTodayData(response) {
   ];
   document.querySelector(".today-day").innerHTML =
     daysOfWeek[new Date(response.data.dt * 1000).getDay()];
+  let iconElement = document.querySelector(".today-emoji");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 //add default city
 function searchCity(city) {
