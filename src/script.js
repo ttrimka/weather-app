@@ -1,8 +1,7 @@
 function showTodayData(response) {
+  celsiusTemp = Math.round(response.data.main.temp);
   document.querySelector(".current-location").innerHTML = response.data.name;
-  document.querySelector("#current-temp").innerHTML = Math.round(
-    response.data.main.temp
-  );
+  document.querySelector("#current-temp").innerHTML = celsiusTemp;
   document.querySelector(".today-precipitation").innerHTML =
     response.data.weather[0].main;
   document.querySelector(".today-humidity").innerHTML =
@@ -38,10 +37,6 @@ function handleSubmit(event) {
   let city = document.querySelector("#text").value; //add a search engine, when searching for a city (i.e. Paris), display the city name on the page after the user submits the form.
   searchCity(city);
 }
-let searchForm = document.querySelector("#search-engine");
-searchForm.addEventListener("submit", handleSubmit);
-searchCity("Kyiv"); //add default city
-//current location weather
 function showPosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
@@ -52,5 +47,28 @@ function showPosition(position) {
 function getCurrentPosition() {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
+function showCelsiumTemp(event) {
+  event.preventDefault();
+  celsiusButton.classList.add("active");
+  fahrenheitButton.classList.remove("active");
+  document.querySelector("#current-temp").innerHTML = celsiusTemp;
+}
+function showFahrenheitTemp(event) {
+  event.preventDefault();
+  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
+  fahrenheitButton.classList.add("active");
+  celsiusButton.classList.remove("active");
+  document.querySelector("#current-temp").innerHTML =
+    Math.round(fahrenheitTemp);
+}
+let celsiusTemp = null;
+let celsiusButton = document.querySelector("#celsium");
+celsiusButton.addEventListener("click", showCelsiumTemp);
+let fahrenheitButton = document.querySelector("#fahrenheit");
+fahrenheitButton.addEventListener("click", showFahrenheitTemp);
 let currentLocationButton = document.querySelector(".current-location-btn");
 currentLocationButton.addEventListener("click", getCurrentPosition);
+let searchForm = document.querySelector("#search-engine");
+searchForm.addEventListener("submit", handleSubmit);
+searchCity("Kyiv"); //add default city
+//current location weather

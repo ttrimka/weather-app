@@ -178,14 +178,20 @@
   margin: 0;
   text-align: center;
 }
-.celsium,
-.fahrenheit {
+#celsium,
+#fahrenheit {
   color: #9fc4c8;
-}
-:hover.fahrenheit,
-:hover.celsium {
   text-decoration: none;
-  color: aliceblue;
+}
+#celsium.active,
+#fahrenheit.active {
+  color: #dfdede;
+  cursor: default;
+}
+#celsium.active:hover,
+#fahrenheit.active:hover {
+  text-decoration: none;
+  cursor: pointer;
 }
 .code-source {
   color: #c2bebe;
