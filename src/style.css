@@ -68,21 +68,7 @@
 .current-location-btn:focus {
   outline: none;
 }
-.current-location-btn[title]:hover::after {
-  content: attr(title);
-  opacity: 1;
-  visibility: visible;
-  transition: all 0.2s ease-out 0.5s;
-  background: white;
-  padding: 14px;
-  border-radius: 50px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-.current-location-btn[title]:focus::after {
-  padding: 14px;
-  border-radius: 50px;
-  font-family: Arial, Helvetica, sans-serif;
-}
+
 .today-forecast,
 .location {
   width: 280px;
