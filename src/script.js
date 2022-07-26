@@ -26,7 +26,33 @@ function showTodayData(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
 }
-//add default city
+function weatherForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class = "row">`;
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+    <div class="col-sm-2">
+      <p class="next-day" id="first-day">${day}</p>
+        <div class="row">
+          <div class="col-6">
+            <p class="next-day-emoji">
+              <i class="fa-solid fa-cloud-sun-rain"></i>
+            </p>
+          </div>
+        <div class="col-6">
+          <p class="next-day-temp-max">23°</p>
+          <p class="next-day-temp-max">14°</p>
+        </div>
+        </div>
+    </div>    
+        `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
 function searchCity(city) {
   let apiKey = "66bb6ce1fd45936de64e0e5b29e1e52a";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -61,6 +87,7 @@ function showFahrenheitTemp(event) {
   document.querySelector("#current-temp").innerHTML =
     Math.round(fahrenheitTemp);
 }
+weatherForecast();
 let celsiusTemp = null;
 let celsiusButton = document.querySelector("#celsium");
 celsiusButton.addEventListener("click", showCelsiumTemp);
