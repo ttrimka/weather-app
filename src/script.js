@@ -1,7 +1,7 @@
 function getForecast(coordinates) {
   let apiKey = "66bb6ce1fd45936de64e0e5b29e1e52a";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&untits=metric`;
-  axios.get(apiUrl).then(weatherForecast);
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showWeatherForecast);
 }
 function showTodayData(response) {
   celsiusTemp = Math.round(response.data.main.temp);
@@ -32,33 +32,40 @@ function showTodayData(response) {
   );
   getForecast(response.data.coord);
 }
-function weatherForecast(response) {
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+function showWeatherForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
-  let forecastHTML = `<div class = "row">`;
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+  let forecastHTML = `<div class = "row"> `;
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
     <div class="col-sm-2">
-      <p class="next-day" id="first-day">${day}</p>
+      <p class="next-day">${formatDay(forecastDay.dt)}</p>
         <div class="row">
-          <div class="col-6">
-            <p class="next-day-emoji">
-              <i class="fa-solid fa-cloud-sun-rain"></i>
-            </p>
+          <div class="col-6" id="icon-temp-col">
+           <img src="http://openweathermap.org/img/wn/${
+             forecastDay.weather[0].icon
+           }@2x.png" class="next-day-emoji" />        
           </div>
-        <div class="col-6">
-          <p class="next-day-temp-max">23°</p>
-          <p class="next-day-temp-max">14°</p>
+        <div class="col-6" id="icon-temp-col">
+          <p class="next-day-temp-max">${Math.round(forecastDay.temp.max)}°</p>
+          <p class="next-day-temp-max">${Math.round(forecastDay.temp.min)}°</p>
         </div>
         </div>
     </div>    
         `;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
-  console.log(response.data.daily);
 }
 function searchCity(city) {
   let apiKey = "66bb6ce1fd45936de64e0e5b29e1e52a";
